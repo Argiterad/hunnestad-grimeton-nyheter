@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hunnestad &amp; Grimeton Nyheter</title>
+    <meta name="description" content="Nyheter från Hunnestad och Grimeton i Varbergs kommun. Senaste artiklarna först. Sidan uppdateras automatiskt varje dag.">
+    <meta name="theme-color" content="#f3eee4">
+    <meta property="og:title" content="Hunnestad &amp; Grimeton Nyheter">
+    <meta property="og:description" content="Bygdenyheter från Hunnestad och Grimeton. Nyast först, uppdateras varje dag.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#innehall">Hoppa till innehållet</a>
+    <header class="site-header">
+      <div class="wrap topbar">
+        <span>Halland · Varbergs kommun</span>
+        <span>Uppdateras dagligen</span>
+      </div>
+      <div class="wrap masthead">
+        <p class="brand-kicker">Bygdenyheter</p>
+        <a class="brand" href="./index.html">Hunnestad <em>&amp;</em> Grimeton</a>
+        <p class="tagline">Två grannbyar öster om Varberg</p>
+        <nav class="site-nav" aria-label="Sidnavigering">
+          <a href="./index.html" aria-current="page">Hem</a>
+          <a href="./om.html">Om sidan</a>
+        </nav>
+      </div>
+    </header>
+    <div class="horizon" aria-hidden="true"></div>
+    <main id="innehall" class="wrap">
+      <h1>Senaste från bygden</h1>
+      <p class="lede">Nyast först, från Hunnestad, Grimeton och sådant i Varberg som rör byarna. En bot hämtar nya artiklar varje dag. <a href="./om.html">Så fungerar sidan</a>.</p>
+      <div class="toolbar">
+        <div class="chips" role="group" aria-label="Filtrera på ort">
+          <button type="button" class="chip" data-ort="alla" aria-pressed="true">Alla</button>
+          <button type="button" class="chip" data-ort="hunnestad" aria-pressed="false">Hunnestad</button>
+          <button type="button" class="chip" data-ort="grimeton" aria-pressed="false">Grimeton</button>
+        </div>
+        <p class="hint">Hunnestad och Grimeton visar även artiklar som gäller båda byarna. Sådant som bara är märkt Varberg syns under Alla.</p>
+      </div>
+      <p id="count" class="count" aria-live="polite">Hämtar nyheter …</p>
+      <noscript>
+        <p class="status">Slå på JavaScript för att visa nyhetslistan. Underlaget ligger öppet i data/news.json.</p>
+      </noscript>
+      <div id="news-list" class="news-list" aria-busy="true"></div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Hunnestad &amp; Grimeton Nyheter samlar öppna källor om de två byarna. Sidan uppdateras automatiskt en gång om dagen och är inte en officiell kanal för Varbergs kommun.</p>
+        <nav class="footer-nav" aria-label="Sidfot">
+          <a href="./index.html" aria-current="page">Hem</a>
+          <a href="./om.html">Om sidan</a>
+        </nav>
+      </div>
+    </footer>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

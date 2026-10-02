@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Om sidan · Hunnestad &amp; Grimeton Nyheter</title>
+    <meta name="description" content="Om Hunnestad och Grimeton Nyheter. En bot uppdaterar sidan varje dag med artiklar om de två byarna i Varbergs kommun.">
+    <meta name="theme-color" content="#f3eee4">
+    <meta property="og:title" content="Om sidan · Hunnestad &amp; Grimeton Nyheter">
+    <meta property="og:description" content="Sidan uppdateras automatiskt varje dag av en bot.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#innehall">Hoppa till innehållet</a>
+    <header class="site-header">
+      <div class="wrap topbar">
+        <span>Halland · Varbergs kommun</span>
+        <span>Uppdateras dagligen</span>
+      </div>
+      <div class="wrap masthead">
+        <p class="brand-kicker">Bygdenyheter</p>
+        <a class="brand" href="./index.html">Hunnestad <em>&amp;</em> Grimeton</a>
+        <p class="tagline">Två grannbyar öster om Varberg</p>
+        <nav class="site-nav" aria-label="Sidnavigering">
+          <a href="./index.html">Hem</a>
+          <a href="./om.html" aria-current="page">Om sidan</a>
+        </nav>
+      </div>
+    </header>
+    <div class="horizon" aria-hidden="true"></div>
+    <main id="innehall" class="wrap prose">
+      <h1>Om sidan</h1>
+      <p>Hunnestad &amp; Grimeton Nyheter är en liten sida för två grannbyar i Varbergs kommun. Den samlar sådant som skrivits om Hunnestad och Grimeton, med det senaste överst.</p>
+      <dl class="facts">
+        <dt>Orter</dt>
+        <dd>Hunnestad och Grimeton</dd>
+        <dt>Kommun</dt>
+        <dd>Varberg</dd>
+        <dt>Landskap</dt>
+        <dd>Halland</dd>
+        <dt>Uppdatering</dt>
+        <dd>Varje dag, av en bot</dd>
+        <dt>Underlag</dt>
+        <dd>data/news.json</dd>
+      </dl>
+
+      <h2>En bot uppdaterar varje dag</h2>
+      <p>Det finns ingen redaktion bakom texterna. En bot körs en gång om dagen, söker efter nya artiklar och skriver in dem i filen <code>data/news.json</code>. Sidan är statisk. Den visar bara det som ligger i filen, och behöver inte byggas om för att en ny artikel ska synas.</p>
+      <p>Boten slår ihop dubbletter, alltså samma länk eller samma rubrik, och behåller högst 30 artiklar. Nyast ligger först.</p>
+
+      <h2>Byarna</h2>
+      <p>Hunnestad och Grimeton ligger i den halländska jordbruksbygden öster om Varberg. Grimeton, ungefär en och en halv mil från kusten, är känt för radiostationen. Den byggdes 1922–1924, med sex 127 meter höga antenntorn, och står sedan 2004 på Unescos världsarvslista. Hunnestad är grannbyn, med egen bygdehistoria. Här stod det vikingatida Hunnestadsmonumentet.</p>
+      <p>En artikel som gäller båda byarna märks «Hunnestad och Grimeton» och syns i båda filtren på förstasidan. En artikel som främst handlar om Varbergs kommun syns när filtret står på Alla.</p>
+      <ul>
+        <li><a href="https://grimeton.org/" target="_blank" rel="noopener noreferrer">Världsarvet Grimeton<span class="sr-only"> (öppnas i ny flik)</span></a></li>
+        <li><a href="https://whc.unesco.org/en/list/1134/" target="_blank" rel="noopener noreferrer">Unescos beskrivning av radiostationen<span class="sr-only"> (öppnas i ny flik)</span></a></li>
+      </ul>
+
+      <h2>Exempel när sökningen inte är igång</h2>
+      <p>Utan en söknyckel, eller när sökningen inte ger några träffar och listan saknar riktiga artiklar, fylls sidan med ett fåtal påhittade exempel. De är märkta Exempel, både i listan och i texten. De är inte nyheter. Så fort en riktig sökning får träffar tas exemplen bort.</p>
+
+      <h2>Källor</h2>
+      <p>Vi publicerar inte hela artiklar. Varje post har en rubrik, en kort sammanfattning och en länk till ursprungssidan. Det är källan som ansvarar för sin text. Den här sidan är inte en officiell kanal för Varbergs kommun, för Stiftelsen Världsarvet Grimeton eller för någon tidning.</p>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Hunnestad &amp; Grimeton Nyheter samlar öppna källor om de två byarna. Sidan uppdateras automatiskt en gång om dagen och är inte en officiell kanal för Varbergs kommun.</p>
+        <nav class="footer-nav" aria-label="Sidfot">
+          <a href="./index.html">Hem</a>
+          <a href="./om.html" aria-current="page">Om sidan</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
