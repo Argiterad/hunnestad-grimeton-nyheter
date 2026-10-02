@@ -15,115 +15,41 @@
     "imageCredit": "Grimeton IK / myclub (grimetonik.se)"
   },
   {
-    "id": "ex-grimeton-visning",
-    "title": "Extra visning i sändarsalen i Grimeton",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan berätta om en visning för allmänheten, med tid och plats hämtade från en riktig källa.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/grimeton-visning",
-    "publishedAt": "2026-09-30T10:00:00+02:00",
+    "id": "hn-ledare-grimeton-omradesbestammelser-2026",
+    "title": "Unik anläggning kräver ett unikt samarbete",
+    "summary": "Hallands Nyheters ledare (Katarina Erlingson, 19 maj 2026) menar att Varbergs områdesbestämmelser runt Grimeton radiostation (~3 500 ha) inte får lägga en död hand över bygden. LRF Varberg kräver omtag; världsarvets vd Camilla Lugnet vill se varsam samexistens. Uppmaningen: kommun, radiostation, lantbruk och företag måste hitta en gemensam lösning.",
+    "source": "Hallands Nyheter",
+    "sourceUrl": "https://www.hn.se/asikter/ledare/unik-anlaggning-kraver-ett-unikt-samarbete.5e915b8b-e009-42f4-b808-11ed014cf553",
+    "publishedAt": "2026-05-19T08:00:00+02:00",
     "place": "Grimeton",
     "tags": [
-      "exempel",
-      "världsarv"
-    ],
-    "example": true
-  },
-  {
-    "id": "ex-hunnestad-hosttraff",
-    "title": "Hunnestads byalag kallar till höstträff",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan berätta att byalaget ses i bygdegården och tar upp vägförening, belysning och vem som kokar kaffet.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/hunnestad-hosttraff",
-    "publishedAt": "2026-09-26T11:00:00+02:00",
-    "place": "Hunnestad",
-    "tags": [
-      "exempel",
-      "förening"
-    ],
-    "example": true
-  },
-  {
-    "id": "ex-bada-loppis",
-    "title": "Loppis mellan Hunnestad och Grimeton",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan handla om en gemensam loppis på gränsen mellan byarna, utan att påstå att just den dagen är verklig.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/bada-loppis",
-    "publishedAt": "2026-09-20T09:00:00+02:00",
-    "place": "Båda",
-    "tags": [
-      "exempel",
-      "förening"
-    ],
-    "example": true
-  },
-  {
-    "id": "ex-varberg-bibliotek",
-    "title": "Varberg berättar om biblioteksbussen i öster",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En kommunnotis kan nämna boende i Hunnestad och Grimeton även när själva händelsen hör hemma i Varberg. Då syns den bara under filtret Alla.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/varberg-bibliotek",
-    "publishedAt": "2026-09-15T08:00:00+02:00",
-    "place": "Varberg",
-    "tags": [
-      "exempel",
+      "världsarv",
       "kommun"
-    ],
-    "example": true
+    ]
   },
   {
-    "id": "ex-grimeton-bildkvall",
-    "title": "Bildkväll om radiostationen i Grimeton",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan peka på en bildvisning om världsarvet, med länk till den förening som faktiskt bjuder in.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/grimeton-bildkvall",
-    "publishedAt": "2026-09-09T18:30:00+02:00",
-    "place": "Grimeton",
-    "tags": [
-      "exempel",
-      "världsarv"
-    ],
-    "example": true
-  },
-  {
-    "id": "ex-hunnestad-vag",
-    "title": "Hunnestads vägförening tar upp byvägens belysning",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan sammanfatta ett möte om belysning eller diken, när det finns ett protokoll eller ett inlägg att länka till.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/hunnestad-vag",
-    "publishedAt": "2026-09-03T16:00:00+02:00",
+    "id": "hn-hunnestad-bostad-ab-2026",
+    "title": "Hunnestad Bostad AB registrerat",
+    "summary": "Den 17 april 2026 registrerades Hunnestad Bostad AB hos Bolagsverket (säte Skällinge). Verksamhet: uthyrning av bostäder och lokaler. Styrelseordförande Isak Bengtsson, 30 år; även Lena och Olof Bengtsson i ledningen. Aktiekapital 25 800 kr.",
+    "source": "Hallands Nyheter",
+    "sourceUrl": "https://www.hn.se/hallands-affarer/foretagsnytt/30-aring-startar-nytt-foretag-i-varberg.52ab2c53-099f-51fb-a2c2-0b5f007272ee",
+    "publishedAt": "2026-04-20T08:00:00+02:00",
     "place": "Hunnestad",
     "tags": [
-      "exempel",
-      "trafik"
-    ],
-    "example": true
+      "kommun"
+    ]
   },
   {
-    "id": "ex-bada-skorde",
-    "title": "Föreningarna i de båda byarna planerar skördefika",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan gälla både Hunnestad och Grimeton, till exempel en gemensam fika efter skörden.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/bada-skorde",
-    "publishedAt": "2026-08-27T15:00:00+02:00",
-    "place": "Båda",
-    "tags": [
-      "exempel",
-      "förening"
-    ],
-    "example": true
-  },
-  {
-    "id": "ex-grimeton-tradgard",
-    "title": "Trädgårdsdag vid radiostationen i Grimeton",
-    "summary": "Exempel. Påhittad text, inte en verifierad nyhet. En sådan här notis kan efterlysa frivilliga till en trädgårdsdag, med anmälan via arrangörens egen sida.",
-    "source": "Exempelkälla",
-    "sourceUrl": "https://example.com/hunnestad-grimeton/exempel/grimeton-tradgard",
-    "publishedAt": "2026-08-20T10:00:00+02:00",
+    "id": "hn-insandare-skydda-varldsarvet-2026",
+    "title": "Skydda världsarvet – men kväv inte bygden",
+    "summary": "Insändare av Karin Warefelt (C), 21 mars 2026: samrådet om områdesbestämmelserna behöver ett omtag så att skyddet av världsarvet balanseras mot jordbruk, företagande och boende i bygden. Involvera lokalt näringsliv och boende tidigt.",
+    "source": "Hallands Nyheter",
+    "sourceUrl": "https://www.hn.se/asikter/ordet-ar-fritt/skydda-varldsarvet-men-kvav-inte-bygden-.26802312-6f3b-477a-97e9-f9a222c607c6",
+    "publishedAt": "2026-03-21T08:00:00+02:00",
     "place": "Grimeton",
     "tags": [
-      "exempel",
-      "världsarv"
-    ],
-    "example": true
+      "världsarv",
+      "kommun"
+    ]
   }
 ]
