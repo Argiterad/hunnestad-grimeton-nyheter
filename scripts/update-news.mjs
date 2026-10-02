@@ -353,7 +353,7 @@ function normalizeArticle(raw) {
   const example = Boolean(raw.example);
   const place = PLACES.has(raw.place) ? raw.place : inferPlace(`${title} ${summary}`);
   const tags = normalizeTags(raw.tags, example);
-  return {
+  const article = {
     id: validId(raw.id) ? raw.id : makeId(sourceUrl, title),
     title: truncate(title, 180),
     summary,
@@ -364,6 +364,18 @@ function normalizeArticle(raw) {
     tags,
     example,
   };
+  const imageUrl = cleanText(raw.imageUrl);
+  // Keep only site-relative paths (e.g. images/foo.jpg), not remote URLs.
+  if (
+    imageUrl
+    && !/^https?:\/\/|^\/\/|^\/|\.\./i.test(imageUrl)
+    && !/^[a-z][a-z0-9+.-]*:/i.test(imageUrl)
+  ) {
+    article.imageUrl = imageUrl.replace(/^\.\//, "");
+  }
+  const imageCredit = cleanText(raw.imageCredit) || cleanText(raw.imageSource);
+  if (imageCredit) article.imageCredit = truncate(imageCredit, 240);
+  return article;
 }
 
 function mentionsPlace(article) {
@@ -415,6 +427,9 @@ function mergeArticles(groups) {
     }
 
     let chosen = prefer(prev, article);
+    const other = chosen === prev ? article : prev;
+    if (!chosen.imageUrl && other.imageUrl) chosen = { ...chosen, imageUrl: other.imageUrl };
+    if (!chosen.imageCredit && other.imageCredit) chosen = { ...chosen, imageCredit: other.imageCredit };
     if (chosen !== prev) {
       const keepPreviousId = !(prev.example && !chosen.example);
       chosen = { ...chosen, id: keepPreviousId ? (prev.id || chosen.id) : (chosen.id || prev.id) };
@@ -452,6 +467,8 @@ function toJsonShape(article) {
   };
   if (article.tags?.length) shaped.tags = article.tags;
   if (article.example) shaped.example = true;
+  if (article.imageUrl) shaped.imageUrl = article.imageUrl;
+  if (article.imageCredit) shaped.imageCredit = article.imageCredit;
   return shaped;
 }
 

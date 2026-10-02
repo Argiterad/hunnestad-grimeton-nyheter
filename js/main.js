@@ -89,6 +89,23 @@ function safeHref(url) {
   return null;
 }
 
+/** Local site path only, e.g. images/foo.jpg — no remote or parent traversal. */
+function safeImageUrl(url) {
+  if (typeof url !== "string") return null;
+  const trimmed = url.trim().replace(/^\.\//, "");
+  if (!trimmed) return null;
+  if (
+    trimmed.includes("..")
+    || trimmed.includes("\\")
+    || trimmed.startsWith("/")
+    || trimmed.startsWith("//")
+    || /^[a-z][a-z0-9+.-]*:/i.test(trimmed)
+  ) {
+    return null;
+  }
+  return trimmed;
+}
+
 function badge(className, text) {
   const span = document.createElement("span");
   span.className = className;
@@ -162,7 +179,30 @@ function renderCard(article, isLead) {
     foot.append(list);
   }
 
-  card.append(meta, heading, summary, foot);
+  const nodes = [meta];
+  const imageUrl = safeImageUrl(article.imageUrl);
+  if (imageUrl) {
+    const media = document.createElement("figure");
+    media.className = "card-media";
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.alt = article.title ? String(article.title) : "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    media.append(img);
+    const credit = typeof article.imageCredit === "string"
+      ? article.imageCredit.trim()
+      : (typeof article.imageSource === "string" ? article.imageSource.trim() : "");
+    if (credit) {
+      const caption = document.createElement("figcaption");
+      caption.className = "card-credit";
+      caption.textContent = credit;
+      media.append(caption);
+    }
+    nodes.push(media);
+  }
+  nodes.push(heading, summary, foot);
+  card.append(...nodes);
   return card;
 }
 

@@ -42,6 +42,8 @@ Artiklarna ligger i `data/news.json`. Det är en array. Varje post har:
 | `place` | `Hunnestad`, `Grimeton`, `Varberg` eller `Båda` |
 | `tags` | Valfria etiketter |
 | `example` | `true` om posten är påhittad exempeltext |
+| `imageUrl` | Valfri sökväg under sajten, t.ex. `images/foto.jpg` |
+| `imageCredit` | Valfri bildkälla/kredit (kan också heta `imageSource` i underlaget) |
 
 `npm run update-news` läser filen, söker efter nya träffar, slår ihop dubbletter och skriver tillbaka högst 30 artiklar. Nyast hamnar först. Samma `sourceUrl` eller samma rubrik räknas som dubblett. Riktiga artiklar behålls framför exempel.
 

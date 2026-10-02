@@ -54,6 +54,10 @@ export default defineConfig({
       closeBundle() {
         const dist = resolve(root, 'dist');
         cpSync(resolve(root, 'data'), join(dist, 'data'), { recursive: true });
+        const imagesDir = resolve(root, 'images');
+        if (existsSync(imagesDir)) {
+          cpSync(imagesDir, join(dist, 'images'), { recursive: true });
+        }
         writeFileSync(join(dist, '.nojekyll'), '');
       },
     },
