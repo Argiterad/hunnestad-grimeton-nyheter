@@ -1,5 +1,6 @@
-const SECTION_ORDER = ["Samhälle", "Ekonomi och Företag", "Sport", "Kultur"];
+const SECTION_ORDER = ["Samhälle", "Näringsliv", "Sport", "Kultur", "Debatt", "Tips"];
 const SECTIONS = new Set(SECTION_ORDER);
+const HOME_PUFF_SECTIONS = ["Samhälle", "Näringsliv", "Sport", "Kultur", "Debatt"];
 const ZONE = "Europe/Stockholm";
 
 const FALLBACK_EXAMPLE = {
@@ -38,15 +39,39 @@ function isExample(raw, tags) {
   return raw.example === true || tags.includes("exempel");
 }
 
+function isTip(raw, tags) {
+  const section = typeof raw.section === "string" ? raw.section.trim() : "";
+  if (section === "Tips") return true;
+  if (typeof raw.kind === "string" && raw.kind.trim().toLowerCase() === "tips") return true;
+  if (tags.includes("tips")) return true;
+  if (typeof raw.id === "string" && raw.id.toLowerCase().startsWith("tips-")) return true;
+  return false;
+}
+
+function normalizeSectionName(section) {
+  if (section === "Ekonomi och Företag") return "Näringsliv";
+  return section;
+}
+
 function inferSection(raw, tags) {
-  if (typeof raw.section === "string" && SECTIONS.has(raw.section)) return raw.section;
+  if (isTip(raw, tags)) return "Tips";
+  if (typeof raw.section === "string") {
+    const mapped = normalizeSectionName(raw.section.trim());
+    if (SECTIONS.has(mapped)) return mapped;
+  }
+  if (typeof raw.kind === "string") {
+    const kind = raw.kind.trim().toLowerCase();
+    if (kind === "debatt") return "Debatt";
+    if (kind === "tips") return "Tips";
+  }
   const tagset = new Set(tags);
   const titleBlob = `${raw.id || ""} ${raw.title || ""}`.toLowerCase();
   const blob = `${titleBlob} ${raw.summary || ""}`.toLowerCase();
+  if (tagset.has("debatt") || tagset.has("ledare") || tagset.has("insändare") || tagset.has("insandare")) return "Debatt";
   if (tagset.has("sport") || /grimeton[\s-]+ik|serieseger|division\s+[0-9]/.test(blob)) return "Sport";
-  const ekonomiTag = ["ekonomi", "företag", "foretag", "näringsliv", "naringsliv", "bolag", "affärer", "affarer"].some((tag) => tagset.has(tag));
-  if (ekonomiTag || /\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt/.test(blob)) {
-    return "Ekonomi och Företag";
+  const naringslivTag = ["ekonomi", "företag", "foretag", "näringsliv", "naringsliv", "bolag", "affärer", "affarer"].some((tag) => tagset.has(tag));
+  if (naringslivTag || /\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt/.test(blob)) {
+    return "Näringsliv";
   }
   const kulturTag = ["kultur", "musik", "teater", "konsert", "konst", "museum", "utställning", "utstallning"].some((tag) => tagset.has(tag));
   if (kulturTag || /\b(konsert|teater|vernissage|museum|utställning)\b/.test(titleBlob)) return "Kultur";
@@ -71,6 +96,8 @@ function normalizeItem(raw) {
   const place = typeof raw.place === "string" ? raw.place.trim() : "";
   if (!id || !title || !summary || !source || !/^https?:\/\//i.test(sourceUrl) || Number.isNaN(Date.parse(publishedAt))) return null;
   const tags = Array.isArray(raw.tags) ? raw.tags.filter((tag) => typeof tag === "string" && tag.trim()).map((tag) => tag.trim()) : [];
+  const tagsLower = tags.map((tag) => tag.toLowerCase());
+  const tip = isTip(raw, tagsLower);
   const item = {
     id,
     title,
@@ -80,9 +107,12 @@ function normalizeItem(raw) {
     publishedAt,
     place: place || "Grimeton",
     tags,
-    example: isExample(raw, tags.map((tag) => tag.toLowerCase())),
-    section: inferSection(raw, tags.map((tag) => tag.toLowerCase())),
+    example: isExample(raw, tagsLower),
+    tip,
+    section: inferSection(raw, tagsLower),
   };
+  if (typeof raw.kind === "string" && raw.kind.trim()) item.kind = raw.kind.trim();
+  else if (tip) item.kind = "tips";
   const src = imageSrc(raw.imageUrl);
   if (src) item.imageUrl = src;
   if (typeof raw.imageCredit === "string" && raw.imageCredit.trim()) item.imageCredit = raw.imageCredit.trim();
@@ -107,6 +137,10 @@ function prepare(list) {
     return { items: [FALLBACK_EXAMPLE], real: [], examples: [FALLBACK_EXAMPLE], fallback: true };
   }
   return { items: [...real, ...examples], real, examples, fallback: false };
+}
+
+function homeNews(items) {
+  return items.filter((item) => !item.tip && item.section !== "Tips");
 }
 
 function articleHref(id) {
@@ -165,12 +199,13 @@ function byline(item) {
 }
 
 function selectPuffs(real, lead) {
+  const pool = homeNews(real);
   const puffs = [];
-  for (const section of SECTION_ORDER) {
-    const next = real.find((item) => item.id !== lead.id && item.section === section);
+  for (const section of HOME_PUFF_SECTIONS) {
+    const next = pool.find((item) => item.id !== lead.id && item.section === section);
     if (next) puffs.push(next);
   }
-  for (const item of real) {
+  for (const item of pool) {
     if (puffs.length >= 4) break;
     if (item.id === lead.id || puffs.some((puff) => puff.id === item.id)) continue;
     puffs.push(item);
@@ -278,25 +313,35 @@ function renderStory(item, items) {
   return story;
 }
 
-function renderPuff(item, wide) {
+function renderPuff(item) {
   const article = document.createElement("article");
-  article.className = wide ? "puff puff--wide" : "puff";
+  article.className = item.imageUrl ? "puff puff--thumb" : "puff";
   const link = document.createElement("a");
   link.className = "js-artikel";
   link.href = articleHref(item.id);
+  const copy = document.createElement("div");
+  copy.className = "puff-copy";
+  copy.append(el("p", "kicker", kickerText(item)));
+  copy.append(el("h2", null, item.title));
+  copy.append(el("p", "ingress", shorten(item.summary, 140)));
+  copy.append(el("p", "byline", byline(item)));
+  link.append(copy);
   const img = makeImage(item, "");
-  if (img) link.append(img);
-  link.append(el("p", "kicker", kickerText(item)));
-  link.append(el("h2", null, item.title));
-  link.append(el("p", "ingress", shorten(item.summary, 140)));
-  link.append(el("p", "byline", byline(item)));
+  if (img) {
+    img.width = 240;
+    img.height = 180;
+    link.append(img);
+  }
   article.append(link);
   return article;
 }
 
 function renderHome(data) {
-  const lead = data.real[0] || data.examples[0] || data.items[0];
+  const home = homeNews(data.real);
+  const lead = home[0] || data.examples[0] || data.items[0];
+  const justNu = data.real[0] || lead;
   if (!lead) return;
+
   const leadHost = document.querySelector("[data-lead]");
   if (leadHost) {
     leadHost.replaceChildren();
@@ -313,23 +358,25 @@ function renderHome(data) {
   }
 
   const now = document.querySelector("[data-now]");
-  if (now) {
-    now.href = articleHref(lead.id);
+  if (now && justNu) {
+    now.href = articleHref(justNu.id);
     now.classList.add("js-artikel");
     const line = now.querySelector(".now-line");
-    if (line) line.textContent = lead.example ? `Exempel: ${lead.title}` : lead.title;
+    if (line) line.textContent = justNu.example ? `Exempel: ${justNu.title}` : justNu.title;
   }
 
   const puffHost = document.querySelector("[data-puffs]");
   if (puffHost) {
-    const puffs = data.real.length ? selectPuffs(data.real, lead) : [];
-    puffHost.replaceChildren(...puffs.map((item, index) => renderPuff(item, index === 3 && puffs.length >= 4)));
+    const puffs = home.length ? selectPuffs(data.real, lead) : [];
+    puffHost.replaceChildren(...puffs.map((item) => renderPuff(item)));
     puffHost.hidden = puffHost.childElementCount === 0;
   }
 
   const listHost = document.querySelector("[data-news-list]");
   if (listHost) {
-    const rows = data.real.length ? [...data.real.filter((item) => item.id !== lead.id), ...data.examples] : data.examples.filter((item) => item.id !== lead.id);
+    const rows = home.length
+      ? [...home.filter((item) => item.id !== lead.id), ...data.examples]
+      : data.examples.filter((item) => item.id !== lead.id);
     listHost.replaceChildren(...rows.map((item) => {
       const li = document.createElement("li");
       const time = document.createElement("time");
@@ -435,7 +482,7 @@ function renderArticlePage(data) {
 function markFallback(data) {
   if (!data.fallback) return;
   document.querySelectorAll(".footer-note").forEach((note) => {
-    note.textContent = "Exempel visas för att sidan inte ska vara tom. Inga publicerade nyheter i listan. Väder och programtider är platshållare.";
+    note.textContent = "Exempel visas för att sidan inte ska vara tom. Inga publicerade nyheter i listan.";
   });
 }
 

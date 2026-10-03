@@ -1,6 +1,6 @@
 # Supernytt Grimeton & Hunnestad
 
-Lokala nyheter för Grimeton och Hunnestad. Startsida, sektioner och artiklar läses från `data/news.json`. Väder och programtider är fortfarande platshållare. Utseendet är fast.
+Lokala nyheter för Grimeton och Hunnestad. Startsida, sektioner och artiklar läses från `data/news.json`. Utseendet är fast.
 
 Sidorna ligger i roten och publiceras med GitHub Pages: <https://argiterad.github.io/hunnestad-grimeton-nyheter/>
 
@@ -21,7 +21,7 @@ npm run dev
 
 - Startsida, med artikel som egen adress och som panel på stor skärm
 - Artikel
-- Samhälle, Ekonomi och Företag, Sport, Kultur (samma sektionsmall)
+- Samhälle, Näringsliv, Sport, Kultur, Debatt, Tips (samma sektionsmall)
 - Program
 - Om redaktionen, annonsera, integritet
 

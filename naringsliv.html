@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artikel — Supernytt — Grimeton &amp; Hunnestad</title>
-  <meta name="description" content="Notis från Supernytt Grimeton och Hunnestad.">
+  <title>Näringsliv — Supernytt — Grimeton &amp; Hunnestad</title>
+  <meta name="description" content="Nyheter om näringsliv i Grimeton och Hunnestad.">
   <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1A1814" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="Artikel — Supernytt — Grimeton &amp; Hunnestad">
-  <meta property="og:description" content="Notis från Supernytt Grimeton och Hunnestad.">
+  <meta property="og:title" content="Näringsliv — Supernytt — Grimeton &amp; Hunnestad">
+  <meta property="og:description" content="Nyheter om näringsliv i Grimeton och Hunnestad.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sv_SE">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -20,13 +20,18 @@
 <body>
   <a class="skip" href="#innehall">Hoppa till innehållet</a><header class="site-header">
     
-    <div class="wrap mast"><a class="logo logo--small" href="./index.html">
+    <div class="wrap mast"><a class="logo" href="./index.html">
         <span class="logo-name">Supernytt</span>
         <span class="logo-rule" aria-hidden="true"></span>
         <span class="logo-place">Grimeton &amp; Hunnestad</span>
       </a></div>
-    <nav class="site-nav wrap" aria-label="Sektioner"><a href="./samhalle.html">Samhälle</a><a href="./naringsliv.html">Näringsliv</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a><a href="./debatt.html">Debatt</a><a href="./tips.html">Tips</a></nav>
-  </header><main id="innehall" tabindex="-1" data-page="artikel"><p class="lede" data-article-status>Hämtar notisen …</p></main><footer class="site-footer">
+    <nav class="site-nav wrap" aria-label="Sektioner"><a href="./samhalle.html">Samhälle</a><a href="./naringsliv.html" aria-current="page">Näringsliv</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a><a href="./debatt.html">Debatt</a><a href="./tips.html">Tips</a></nav>
+  </header><main id="innehall" class="wrap" tabindex="-1" data-section="Näringsliv">
+      <h1 class="page-title">Näringsliv</h1>
+      <p class="lede" data-section-status>Hämtar notiserna …</p>
+      <article class="section-lead" data-section-lead hidden></article>
+      <ol class="story-list" data-section-list></ol>
+    </main><footer class="site-footer">
     <div class="wrap">
       <a class="logo logo--small" href="./index.html">
         <span class="logo-name">Supernytt</span>
@@ -44,8 +49,17 @@
     </div>
   </footer>
   <nav class="bottom-nav" aria-label="Mobil"><a href="./index.html"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.2 12 4l8 7.2"/><path d="M7 10.2V20h10V10.2"/></svg><span>Hem</span></a><a href="./index.html#nyheter"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14M5 12h14M5 18h9"/></svg><span>Nyheter</span></a><a href="./program.html"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span>Program</span></a><button type="button" data-mer aria-expanded="false" aria-controls="mer-panel"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14M5 12h14M5 17h14"/></svg><span>Mer</span></button></nav>
-  <nav id="mer-panel" class="mer-panel" hidden aria-label="Mer"><a href="./samhalle.html">Samhälle</a><a href="./naringsliv.html">Näringsliv</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a><a href="./debatt.html">Debatt</a><a href="./tips.html">Tips</a><a href="./program.html">Program</a><a href="./om.html">Om redaktionen</a><a href="./annonsera.html">Annonsera</a><a href="./integritet.html">Integritet</a><a href="mailto:matsbotsson@gmail.com">Tipsa oss</a></nav>
+  <nav id="mer-panel" class="mer-panel" hidden aria-label="Mer"><a href="./samhalle.html">Samhälle</a><a href="./naringsliv.html" aria-current="page">Näringsliv</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a><a href="./debatt.html">Debatt</a><a href="./tips.html">Tips</a><a href="./program.html">Program</a><a href="./om.html">Om redaktionen</a><a href="./annonsera.html">Annonsera</a><a href="./integritet.html">Integritet</a><a href="mailto:matsbotsson@gmail.com">Tipsa oss</a></nav>
   
+  <dialog id="artikel-panel" class="panel" aria-label="Artikel">
+    <div class="panel-sheet">
+      <div class="panel-bar">
+        <a href="./artikel.html">Egen sida</a>
+        <button type="button" class="panel-close" data-close>Stäng</button>
+      </div>
+      <div class="panel-body"></div>
+    </div>
+  </dialog>
   <script type="module" src="./js/site.js"></script>
 </body>
 </html>

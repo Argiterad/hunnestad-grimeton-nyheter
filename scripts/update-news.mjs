@@ -26,7 +26,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const newsPath = resolve(root, "data/news.json");
 const MAX_ITEMS = 30;
 const PLACES = new Set(["Hunnestad", "Grimeton", "Varberg", "Båda"]);
-const SECTIONS = new Set(["Samhälle", "Ekonomi och Företag", "Sport", "Kultur"]);
+const SECTIONS = new Set(["Samhälle", "Näringsliv", "Sport", "Kultur", "Debatt", "Tips"]);
 
 const QUERIES = [
   "Hunnestad Varberg",
@@ -293,14 +293,20 @@ function inferTags(text) {
 }
 
 function inferSection(raw) {
-  if (typeof raw.section === "string" && SECTIONS.has(raw.section)) return raw.section;
-  const tags = new Set(Array.isArray(raw.tags) ? raw.tags : []);
+  const tags = new Set(Array.isArray(raw.tags) ? raw.tags.map((tag) => String(tag).toLowerCase()) : []);
+  const section = typeof raw.section === "string" ? raw.section.trim() : "";
+  const mapped = section === "Ekonomi och Företag" ? "Näringsliv" : section;
+  if (mapped === "Tips" || (typeof raw.kind === "string" && raw.kind.trim().toLowerCase() === "tips") || tags.has("tips") || String(raw.id || "").toLowerCase().startsWith("tips-")) {
+    return "Tips";
+  }
+  if (SECTIONS.has(mapped)) return mapped;
   const titleBlob = `${raw.id || ""} ${raw.title || ""}`.toLowerCase();
   const blob = `${titleBlob} ${raw.summary || ""}`.toLowerCase();
+  if (tags.has("debatt") || tags.has("ledare") || tags.has("insändare") || tags.has("insandare")) return "Debatt";
   if (tags.has("sport") || /grimeton[\s-]+ik|serieseger|division\s+[0-9]/.test(blob)) return "Sport";
-  const ekonomiTag = ["ekonomi", "företag", "foretag", "näringsliv", "naringsliv", "bolag", "affärer", "affarer"].some((tag) => tags.has(tag));
-  if (ekonomiTag || /\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt/.test(blob)) {
-    return "Ekonomi och Företag";
+  const naringslivTag = ["ekonomi", "företag", "foretag", "näringsliv", "naringsliv", "bolag", "affärer", "affarer"].some((tag) => tags.has(tag));
+  if (naringslivTag || /\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt/.test(blob)) {
+    return "Näringsliv";
   }
   const kulturTag = ["kultur", "musik", "teater", "konsert", "konst", "museum", "utställning", "utstallning"].some((tag) => tags.has(tag));
   if (kulturTag || /\b(konsert|teater|vernissage|museum|utställning)\b/.test(titleBlob)) return "Kultur";
@@ -905,7 +911,7 @@ function runSelfTest() {
     place: "Hunnestad",
     tags: ["kommun"],
   });
-  assert(bolag.section === "Ekonomi och Företag", "AB och Bolagsverket är Ekonomi och Företag");
+  assert(bolag.section === "Näringsliv", "AB och Bolagsverket är Näringsliv");
 
   const bygd = normalizeArticle({
     id: "hn-ledare-grimeton-omradesbestammelser-2026",
