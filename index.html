@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Supernytt — Grimeton &amp; Hunnestad</title>
-  <meta name="description" content="Mall för lokala nyheter i Grimeton och Hunnestad. Texter och bilder är platshållare.">
+  <meta name="description" content="Lokala nyheter från Grimeton och Hunnestad.">
   <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1A1814" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Supernytt — Grimeton &amp; Hunnestad">
-  <meta property="og:description" content="Mall för lokala nyheter i Grimeton och Hunnestad. Texter och bilder är platshållare.">
+  <meta property="og:description" content="Lokala nyheter från Grimeton och Hunnestad.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sv_SE">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -23,9 +23,9 @@
       <div class="wrap status">
         <time data-today datetime="2026-10-03">lördag 3 oktober 2026</time>
         <p class="weather"><span>14° · Lätt molnighet</span> <span class="weather-tag">väder är platshållare</span></p>
-        <a class="now js-artikel" href="./artikel.html">
+        <a class="now" data-now href="./index.html">
           <span class="chip">JUST NU</span>
-          <span class="now-line">Platshållare: en kort rad om läget just nu</span>
+          <span class="now-line">Hämtar notiserna …</span>
         </a>
       </div>
     </div>
@@ -38,14 +38,8 @@
   </header><main id="innehall" tabindex="-1">
     <div class="wrap">
       <div class="front">
-        <article class="lead">
-          <a class="lead-link js-artikel" href="./artikel.html">
-            <img src="./images/mast.svg" width="1600" height="1000" alt="Platshållarbild: stiliserat fält med master. Inte ett nyhetsfoto.">
-            <p class="kicker">Samhälle</p>
-            <h1>Platshållare: den stora rubriken som visar hierarkin</h1>
-            <p class="deck">Här står ingressen i två rader. Texten är en platshållare och ska kunna bytas utan att layouten rörs.</p>
-            <p class="byline">Förnamn Efternamn · 3 oktober 2026 · 07.15</p>
-          </a>
+        <article class="lead" data-lead>
+          <p class="deck">Hämtar notiserna …</p>
         </article>
         <aside class="rail" aria-labelledby="idag-rubrik">
           <h2 id="idag-rubrik">Idag i bygden</h2>
@@ -53,59 +47,9 @@
           <p class="rail-more"><a href="./program.html">Fler evenemang och sammanträden</a></p>
         </aside>
       </div>
-      <section id="nyheter" aria-label="Fler platshållare">
-        <div class="puffs"><article class="puff">
-        <a class="js-artikel" href="./artikel.html">
-          <img src="./images/falt.svg" width="1600" height="1000" alt="Platshållarbild: stiliserat fält och en mast.">
-          <p class="kicker">Samhälle</p>
-          <h2>Platshållarrubrik om samhället</h2>
-          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
-          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 07.40</p>
-        </a>
-      </article><article class="puff">
-        <a class="js-artikel" href="./artikel.html">
-          <img src="./images/vag.svg" width="1600" height="1000" alt="Platshållarbild: stiliserade hus vid en väg.">
-          <p class="kicker">Ekonomi och Företag</p>
-          <h2>Platshållarrubrik om företagen</h2>
-          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
-          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 08.05</p>
-        </a>
-      </article><article class="puff">
-        <a class="js-artikel" href="./artikel.html">
-          <img src="./images/plan.svg" width="1600" height="1000" alt="Platshållarbild: tom idrottsplan, inga personer.">
-          <p class="kicker">Sport</p>
-          <h2>Platshållarrubrik om sporten</h2>
-          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
-          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 08.30</p>
-        </a>
-      </article><article class="puff puff--wide">
-        <a class="js-artikel" href="./artikel.html">
-          <img src="./images/sal.svg" width="1600" height="1000" alt="Platshållarbild: tom sal, inga personer.">
-          <p class="kicker">Kultur</p>
-          <h2>Platshållarrubrik om kulturen</h2>
-          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
-          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 09.10</p>
-        </a>
-      </article></div>
-        <ul class="m-list m-news"><li>
-        <time datetime="2026-10-03T07:40">07.40</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Samhälle</span><span class="m-hed">Platshållare: rubrik i listan</span></a>
-      </li><li>
-        <time datetime="2026-10-03T08:05">08.05</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Ekonomi och Företag</span><span class="m-hed">Platshållare: ännu en listrad</span></a>
-      </li><li>
-        <time datetime="2026-10-03T08:30">08.30</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Sport</span><span class="m-hed">Platshållare: tid och sektion</span></a>
-      </li><li>
-        <time datetime="2026-10-03T09:10">09.10</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Kultur</span><span class="m-hed">Platshållare: kort rad utan bild</span></a>
-      </li><li>
-        <time datetime="2026-10-03T11:00">11.00</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Samhälle</span><span class="m-hed">Platshållare: listan fortsätter</span></a>
-      </li><li>
-        <time datetime="2026-10-03T13:20">13.20</time>
-        <a class="js-artikel" href="./artikel.html"><span class="kicker">Sport</span><span class="m-hed">Platshållare: sista raden i listan</span></a>
-      </li></ul>
+      <section id="nyheter" aria-label="Fler nyheter">
+        <div class="puffs" data-puffs></div>
+        <ul class="m-list m-news" data-news-list></ul>
       </section>
       <aside class="annons" aria-label="Annons">
         <p class="kicker">Annons</p>
@@ -131,7 +75,7 @@
         <a href="./integritet.html">Integritet</a>
         <a href="./program.html">Program</a>
       </nav>
-      <p class="footer-note">Texter, tider, väder och bilder är platshållare. Inga publicerade nyheter.</p>
+      <p class="footer-note">Nyheterna är korta sammanfattningar från öppna källor. Väder och programtider är platshållare.</p>
     </div>
   </footer>
   <nav class="bottom-nav" aria-label="Mobil"><a href="./index.html" aria-current="page"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.2 12 4l8 7.2"/><path d="M7 10.2V20h10V10.2"/></svg><span>Hem</span></a><a href="./index.html#nyheter"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14M5 12h14M5 18h9"/></svg><span>Nyheter</span></a><a href="./program.html"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span>Program</span></a><button type="button" data-mer aria-expanded="false" aria-controls="mer-panel"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14M5 12h14M5 17h14"/></svg><span>Mer</span></button></nav>

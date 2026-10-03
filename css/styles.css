@@ -384,6 +384,12 @@ h1, h2, h3 { transition: color 120ms ease; }
 
 .puff--wide .kicker { margin-top: 0; }
 
+.puff a:not(:has(img)) .kicker { margin-top: 0; }
+
+.puff--wide a:not(:has(img)) { display: block; }
+
+.section-lead a:not(:has(img)) { grid-template-columns: minmax(0, 1fr); }
+
 @media (min-width: 1100px) {
   .puffs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .puff--wide { grid-column: auto; }

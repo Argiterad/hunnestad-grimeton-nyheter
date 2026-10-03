@@ -1,10 +1,10 @@
 # Supernytt Grimeton & Hunnestad
 
-Det här är en designmall för en statisk lokaltidning. Rubriker, ingresser, bylines, tider, väder och bilder är platshållare, inte publicerade nyheter. Innehållet ska kunna bytas senare utan att layouten ändras.
+Lokala nyheter för Grimeton och Hunnestad. Startsida, sektioner och artiklar läses från `data/news.json`. Väder och programtider är fortfarande platshållare. Utseendet är fast.
 
 Sidorna ligger i roten och publiceras med GitHub Pages: <https://argiterad.github.io/hunnestad-grimeton-nyheter/>
 
-`data/news.json` driver inte längre sidan.
+`data/news.json` driver ledare, puffar, sektionslistor och artikelsidan (`artikel.html?id=...`). På stor skärm öppnas samma notis i panelen.
 
 ## Köra lokalt
 

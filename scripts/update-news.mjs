@@ -26,6 +26,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const newsPath = resolve(root, "data/news.json");
 const MAX_ITEMS = 30;
 const PLACES = new Set(["Hunnestad", "Grimeton", "Varberg", "Båda"]);
+const SECTIONS = new Set(["Samhälle", "Ekonomi och Företag", "Sport", "Kultur"]);
 
 const QUERIES = [
   "Hunnestad Varberg",
@@ -285,7 +286,25 @@ function inferTags(text) {
   if (/skola|förskola|forskola/.test(haystack)) tags.push("skola");
   if (/väg|trafik|buss/.test(haystack)) tags.push("trafik");
   if (/förening|forening|byalag|\blrf\b/.test(haystack)) tags.push("förening");
+  if (/\b(sport|fotboll|idrott)\b|grimeton ik|serieseger|division\s+[0-9]/.test(haystack)) tags.push("sport");
+  if (/\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt|näringsliv|naringsliv/.test(haystack)) tags.push("företag");
+  if (/\b(konsert|teater|vernissage|museum|utställning|utstallning)\b/.test(haystack)) tags.push("kultur");
   return tags;
+}
+
+function inferSection(raw) {
+  if (typeof raw.section === "string" && SECTIONS.has(raw.section)) return raw.section;
+  const tags = new Set(Array.isArray(raw.tags) ? raw.tags : []);
+  const titleBlob = `${raw.id || ""} ${raw.title || ""}`.toLowerCase();
+  const blob = `${titleBlob} ${raw.summary || ""}`.toLowerCase();
+  if (tags.has("sport") || /grimeton[\s-]+ik|serieseger|division\s+[0-9]/.test(blob)) return "Sport";
+  const ekonomiTag = ["ekonomi", "företag", "foretag", "näringsliv", "naringsliv", "bolag", "affärer", "affarer"].some((tag) => tags.has(tag));
+  if (ekonomiTag || /\b(ab|bolagsverket|aktiekapital)\b|företagsnytt|foretagsnytt/.test(blob)) {
+    return "Ekonomi och Företag";
+  }
+  const kulturTag = ["kultur", "musik", "teater", "konsert", "konst", "museum", "utställning", "utstallning"].some((tag) => tags.has(tag));
+  if (kulturTag || /\b(konsert|teater|vernissage|museum|utställning)\b/.test(titleBlob)) return "Kultur";
+  return "Samhälle";
 }
 
 function normTitle(title) {
@@ -353,14 +372,16 @@ function normalizeArticle(raw) {
   const example = Boolean(raw.example);
   const place = PLACES.has(raw.place) ? raw.place : inferPlace(`${title} ${summary}`);
   const tags = normalizeTags(raw.tags, example);
+  const id = validId(raw.id) ? raw.id : makeId(sourceUrl, title);
   const article = {
-    id: validId(raw.id) ? raw.id : makeId(sourceUrl, title),
+    id,
     title: truncate(title, 180),
     summary,
     source,
     sourceUrl,
     publishedAt,
     place,
+    section: inferSection({ section: raw.section, id, title, summary, tags }),
     tags,
     example,
   };
@@ -464,6 +485,7 @@ function toJsonShape(article) {
     sourceUrl: article.sourceUrl,
     publishedAt: article.publishedAt,
     place: article.place,
+    section: article.section,
   };
   if (article.tags?.length) shaped.tags = article.tags;
   if (article.example) shaped.example = true;
@@ -484,6 +506,9 @@ function validate(list) {
       }
     }
     if (!PLACES.has(article.place)) throw new Error(`Ogiltig ort: ${article.place}`);
+    if (article.section !== undefined && !SECTIONS.has(article.section)) {
+      throw new Error(`Ogiltig sektion i ${article.id}.`);
+    }
     if (!/^https?:\/\//i.test(article.sourceUrl)) throw new Error(`Ogiltig länk i ${article.id}.`);
     if (Number.isNaN(Date.parse(article.publishedAt))) throw new Error(`Ogiltigt datum i ${article.id}.`);
     if (ids.has(article.id)) throw new Error(`Dubblett av id ${article.id}.`);
@@ -841,10 +866,65 @@ function runSelfTest() {
   const shaped = toJsonShape(normalizeArticle(SEEDS[0]));
   assert(
     JSON.stringify(Object.keys(shaped)) === JSON.stringify([
-      "id", "title", "summary", "source", "sourceUrl", "publishedAt", "place", "tags", "example",
+      "id", "title", "summary", "source", "sourceUrl", "publishedAt", "place", "section", "tags", "example",
     ]),
     "fältordning",
   );
+  assert(shaped.section === "Samhälle", "exempel utan tydlig sektion blir Samhälle");
+
+  const sport = normalizeArticle({
+    id: "grimeton-ik-serieseger-div6-2026",
+    title: "Grimeton IK seriesegrare – klart för division 5",
+    summary: "Grimeton IK är seriesegrare i division 6.",
+    source: "Test",
+    sourceUrl: "https://example.org/grimeton-ik",
+    publishedAt: "2026-09-26T18:21:00+02:00",
+    place: "Grimeton",
+    tags: ["förening", "sport"],
+  });
+  assert(sport.section === "Sport", "Grimeton IK ska vara Sport");
+
+  const bolag = normalizeArticle({
+    id: "hn-hunnestad-bostad-ab-2026",
+    title: "Hunnestad Bostad AB registrerat",
+    summary: "Bolaget registrerades hos Bolagsverket.",
+    source: "Hallands Nyheter",
+    sourceUrl: "https://www.hn.se/exempel-ab",
+    publishedAt: "2026-04-20T08:00:00+02:00",
+    place: "Hunnestad",
+    tags: ["kommun"],
+  });
+  assert(bolag.section === "Ekonomi och Företag", "AB och Bolagsverket är Ekonomi och Företag");
+
+  const bygd = normalizeArticle({
+    id: "hn-ledare-grimeton-omradesbestammelser-2026",
+    title: "Unik anläggning kräver ett unikt samarbete",
+    summary: "Kommun, radiostation, lantbruk och företag måste hitta en gemensam lösning i Grimeton.",
+    source: "Hallands Nyheter",
+    sourceUrl: "https://www.hn.se/exempel-ledare",
+    publishedAt: "2026-05-19T08:00:00+02:00",
+    place: "Grimeton",
+    tags: ["världsarv", "kommun"],
+  });
+  assert(bygd.section === "Samhälle", "samarbete och företag i löptext är inte företagssida");
+
+  const biljett = normalizeArticle({
+    id: "grimeton-biljettshop-storningar-2026",
+    title: "Biljettshopen strular – världsarvet öppet som vanligt",
+    summary: "Utställningar och visningar fungerar i Grimeton.",
+    source: "Världsarvet Grimeton",
+    sourceUrl: "https://grimeton.org/",
+    publishedAt: "2026-09-30T15:00:00+02:00",
+    place: "Grimeton",
+    tags: ["världsarv"],
+  });
+  assert(biljett.section === "Samhälle", "världsarv utan kulturtagg stannar i Samhälle");
+
+  const explicit = normalizeArticle({
+    ...SEEDS[0],
+    section: "Kultur",
+  });
+  assert(explicit.section === "Kultur", "satt sektion ska behållas");
   console.log("Självtestet gick igenom.");
 }
 
