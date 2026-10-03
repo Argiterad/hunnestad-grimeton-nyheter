@@ -86,6 +86,10 @@ function normalizeItem(raw) {
   const src = imageSrc(raw.imageUrl);
   if (src) item.imageUrl = src;
   if (typeof raw.imageCredit === "string" && raw.imageCredit.trim()) item.imageCredit = raw.imageCredit.trim();
+  if (typeof raw.imageAlt === "string" && raw.imageAlt.trim()) item.imageAlt = raw.imageAlt.trim();
+  if (typeof raw.quote === "string" && raw.quote.trim()) item.quote = raw.quote.trim();
+  if (typeof raw.quoteBy === "string" && raw.quoteBy.trim()) item.quoteBy = raw.quoteBy.trim();
+  if (raw.emailSource === true) item.emailSource = true;
   return item;
 }
 
@@ -188,7 +192,7 @@ function makeImage(item, alt) {
   img.src = item.imageUrl;
   img.width = 1600;
   img.height = 1000;
-  img.alt = alt;
+  img.alt = item.imageAlt || alt || "";
   return img;
 }
 
@@ -220,14 +224,24 @@ function renderStory(item, items) {
   if (item.example && !item.summary.startsWith("Exempel.")) {
     body.append(el("p", null, "Exempel. Påhittad text, inte en verifierad nyhet."));
   }
+  if (item.quote) {
+    const quote = document.createElement("blockquote");
+    quote.append(el("p", null, item.quote));
+    if (item.quoteBy) quote.append(el("footer", null, item.quoteBy));
+    body.append(quote);
+  }
   const sourceP = document.createElement("p");
-  const sourceA = document.createElement("a");
-  sourceA.href = item.sourceUrl;
-  sourceA.rel = "noopener noreferrer";
-  sourceA.target = "_blank";
-  sourceA.textContent = `Läs hela hos ${item.source}`;
-  sourceP.append(sourceA);
-  body.append(sourceP);
+  if (item.emailSource) {
+    sourceP.textContent = `Källa: mejl från ${item.source} till redaktionen, ${formatLong(item.publishedAt)}.`;
+  } else if (/^https?:\/\//i.test(item.sourceUrl)) {
+    const sourceA = document.createElement("a");
+    sourceA.href = item.sourceUrl;
+    sourceA.rel = "noopener noreferrer";
+    sourceA.target = "_blank";
+    sourceA.textContent = `Läs hela hos ${item.source}`;
+    sourceP.append(sourceA);
+  }
+  if (sourceP.childNodes.length || sourceP.textContent) body.append(sourceP);
   story.append(body);
 
   const related = relatedItems(items, item);

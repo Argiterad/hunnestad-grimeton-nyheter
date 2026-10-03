@@ -396,6 +396,13 @@ function normalizeArticle(raw) {
   }
   const imageCredit = cleanText(raw.imageCredit) || cleanText(raw.imageSource);
   if (imageCredit) article.imageCredit = truncate(imageCredit, 240);
+  const imageAlt = cleanText(raw.imageAlt);
+  if (imageAlt) article.imageAlt = truncate(imageAlt, 240);
+  const quote = cleanText(raw.quote);
+  if (quote) article.quote = truncate(quote, 500);
+  const quoteBy = cleanText(raw.quoteBy);
+  if (quoteBy) article.quoteBy = truncate(quoteBy, 80);
+  if (raw.emailSource === true) article.emailSource = true;
   return article;
 }
 
@@ -491,6 +498,10 @@ function toJsonShape(article) {
   if (article.example) shaped.example = true;
   if (article.imageUrl) shaped.imageUrl = article.imageUrl;
   if (article.imageCredit) shaped.imageCredit = article.imageCredit;
+  if (article.imageAlt) shaped.imageAlt = article.imageAlt;
+  if (article.quote) shaped.quote = article.quote;
+  if (article.quoteBy) shaped.quoteBy = article.quoteBy;
+  if (article.emailSource) shaped.emailSource = true;
   return shaped;
 }
 
