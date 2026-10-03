@@ -1,65 +1,150 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hunnestad &amp; Grimeton Nyheter</title>
-    <meta name="description" content="Nyheter från Hunnestad och Grimeton i Varbergs kommun. Senaste artiklarna först. Sidan uppdateras automatiskt varje dag.">
-    <meta name="theme-color" content="#f3eee4">
-    <meta property="og:title" content="Hunnestad &amp; Grimeton Nyheter">
-    <meta property="og:description" content="Bygdenyheter från Hunnestad och Grimeton. Nyast först, uppdateras varje dag.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="sv_SE">
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-  </head>
-  <body>
-    <a class="skip" href="#innehall">Hoppa till innehållet</a>
-    <header class="site-header">
-      <div class="wrap topbar">
-        <span>Halland · Varbergs kommun</span>
-        <span>Uppdateras dagligen</span>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supernytt — Grimeton &amp; Hunnestad</title>
+  <meta name="description" content="Mall för lokala nyheter i Grimeton och Hunnestad. Texter och bilder är platshållare.">
+  <meta name="theme-color" content="#F6F3EE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1814" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Supernytt — Grimeton &amp; Hunnestad">
+  <meta property="og:description" content="Mall för lokala nyheter i Grimeton och Hunnestad. Texter och bilder är platshållare.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,480..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#innehall">Hoppa till innehållet</a><header class="site-header">
+    <div class="status-bar">
+      <div class="wrap status">
+        <time data-today datetime="2026-10-03">lördag 3 oktober 2026</time>
+        <p class="weather"><span>14° · Lätt molnighet</span> <span class="weather-tag">väder är platshållare</span></p>
+        <a class="now js-artikel" href="./artikel.html">
+          <span class="chip">JUST NU</span>
+          <span class="now-line">Platshållare: en kort rad om läget just nu</span>
+        </a>
       </div>
-      <div class="wrap masthead">
-        <p class="brand-kicker">Bygdenyheter</p>
-        <a class="brand" href="./index.html">Hunnestad <em>&amp;</em> Grimeton</a>
-        <p class="tagline">Två grannbyar öster om Varberg</p>
-        <nav class="site-nav" aria-label="Sidnavigering">
-          <a href="./index.html" aria-current="page">Hem</a>
-          <a href="./om.html">Om sidan</a>
-        </nav>
+    </div>
+    <div class="wrap mast"><a class="logo" href="./index.html">
+        <span class="logo-name">Supernytt</span>
+        <span class="logo-rule" aria-hidden="true"></span>
+        <span class="logo-place">Grimeton &amp; Hunnestad</span>
+      </a></div>
+    <nav class="site-nav wrap" aria-label="Sektioner"><a href="./samhalle.html">Samhälle</a><a href="./ekonomi.html">Ekonomi och Företag</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a></nav>
+  </header><main id="innehall" tabindex="-1">
+    <div class="wrap">
+      <div class="front">
+        <article class="lead">
+          <a class="lead-link js-artikel" href="./artikel.html">
+            <img src="./images/mast.svg" width="1600" height="1000" alt="Platshållarbild: stiliserat fält med master. Inte ett nyhetsfoto.">
+            <p class="kicker">Samhälle</p>
+            <h1>Platshållare: den stora rubriken som visar hierarkin</h1>
+            <p class="deck">Här står ingressen i två rader. Texten är en platshållare och ska kunna bytas utan att layouten rörs.</p>
+            <p class="byline">Förnamn Efternamn · 3 oktober 2026 · 07.15</p>
+          </a>
+        </article>
+        <aside class="rail" aria-labelledby="idag-rubrik">
+          <h2 id="idag-rubrik">Idag i bygden</h2>
+          <ol><li><time datetime="2026-10-03T08:30">08.30</time><p>Platshållare · sammanträde</p></li><li><time datetime="2026-10-03T10:15">10.15</time><p>Platshållare · möte</p></li><li><time datetime="2026-10-03T13:00">13.00</time><p>Platshållare · träning</p></li><li><time datetime="2026-10-03T16:45">16.45</time><p>Platshållare · repetition</p></li><li><time datetime="2026-10-03T19:00">19.00</time><p>Platshållare · kväll</p></li></ol>
+          <p class="rail-more"><a href="./program.html">Fler evenemang och sammanträden</a></p>
+        </aside>
       </div>
-    </header>
-    <div class="horizon" aria-hidden="true"></div>
-    <main id="innehall" class="wrap">
-      <h1>Senaste från bygden</h1>
-      <p class="lede">Nyast först, från Hunnestad, Grimeton och sådant i Varberg som rör byarna. En bot hämtar nya artiklar varje dag. <a href="./om.html">Så fungerar sidan</a>.</p>
-      <div class="toolbar">
-        <div class="chips" role="group" aria-label="Filtrera på ort">
-          <button type="button" class="chip" data-ort="alla" aria-pressed="true">Alla</button>
-          <button type="button" class="chip" data-ort="hunnestad" aria-pressed="false">Hunnestad</button>
-          <button type="button" class="chip" data-ort="grimeton" aria-pressed="false">Grimeton</button>
-        </div>
-        <p class="hint">Hunnestad och Grimeton visar även artiklar som gäller båda byarna. Sådant som bara är märkt Varberg syns under Alla.</p>
+      <section id="nyheter" aria-label="Fler platshållare">
+        <div class="puffs"><article class="puff">
+        <a class="js-artikel" href="./artikel.html">
+          <img src="./images/falt.svg" width="1600" height="1000" alt="Platshållarbild: stiliserat fält och en mast.">
+          <p class="kicker">Samhälle</p>
+          <h2>Platshållarrubrik om samhället</h2>
+          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
+          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 07.40</p>
+        </a>
+      </article><article class="puff">
+        <a class="js-artikel" href="./artikel.html">
+          <img src="./images/vag.svg" width="1600" height="1000" alt="Platshållarbild: stiliserade hus vid en väg.">
+          <p class="kicker">Ekonomi och Företag</p>
+          <h2>Platshållarrubrik om företagen</h2>
+          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
+          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 08.05</p>
+        </a>
+      </article><article class="puff">
+        <a class="js-artikel" href="./artikel.html">
+          <img src="./images/plan.svg" width="1600" height="1000" alt="Platshållarbild: tom idrottsplan, inga personer.">
+          <p class="kicker">Sport</p>
+          <h2>Platshållarrubrik om sporten</h2>
+          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
+          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 08.30</p>
+        </a>
+      </article><article class="puff puff--wide">
+        <a class="js-artikel" href="./artikel.html">
+          <img src="./images/sal.svg" width="1600" height="1000" alt="Platshållarbild: tom sal, inga personer.">
+          <p class="kicker">Kultur</p>
+          <h2>Platshållarrubrik om kulturen</h2>
+          <p class="ingress">Ingressrad ett som platshållare. Rad två byts ut senare.</p>
+          <p class="byline">Förnamn Efternamn · 3 okt 2026 · 09.10</p>
+        </a>
+      </article></div>
+        <ul class="m-list m-news"><li>
+        <time datetime="2026-10-03T07:40">07.40</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Samhälle</span><span class="m-hed">Platshållare: rubrik i listan</span></a>
+      </li><li>
+        <time datetime="2026-10-03T08:05">08.05</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Ekonomi och Företag</span><span class="m-hed">Platshållare: ännu en listrad</span></a>
+      </li><li>
+        <time datetime="2026-10-03T08:30">08.30</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Sport</span><span class="m-hed">Platshållare: tid och sektion</span></a>
+      </li><li>
+        <time datetime="2026-10-03T09:10">09.10</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Kultur</span><span class="m-hed">Platshållare: kort rad utan bild</span></a>
+      </li><li>
+        <time datetime="2026-10-03T11:00">11.00</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Samhälle</span><span class="m-hed">Platshållare: listan fortsätter</span></a>
+      </li><li>
+        <time datetime="2026-10-03T13:20">13.20</time>
+        <a class="js-artikel" href="./artikel.html"><span class="kicker">Sport</span><span class="m-hed">Platshållare: sista raden i listan</span></a>
+      </li></ul>
+      </section>
+      <aside class="annons" aria-label="Annons">
+        <p class="kicker">Annons</p>
+        <p>Platshållare för en lokal sponsor. En rad, samma typsnitt som sidan.</p>
+      </aside>
+      <section class="evening" aria-labelledby="kvall-rubrik">
+        <h2 id="kvall-rubrik">Kvällens program</h2>
+        <ol><li><time datetime="2026-10-03T18:00">18.00</time>Platshållare · Bygdegården</li><li><time datetime="2026-10-03T19:30">19.30</time>Platshållare · Idrottshallen</li><li><time datetime="2026-10-03T20:15">20.15</time>Platshållare · Församlingshemmet</li></ol>
+        <p class="evening-more"><a href="./program.html">Hela programmet</a></p>
+      </section>
+    </div>
+  </main><footer class="site-footer">
+    <div class="wrap">
+      <a class="logo logo--small" href="./index.html">
+        <span class="logo-name">Supernytt</span>
+        <span class="logo-rule" aria-hidden="true"></span>
+        <span class="logo-place">Grimeton &amp; Hunnestad</span>
+      </a>
+      <nav class="footer-nav" aria-label="Sidfot">
+        <a href="./om.html">Redaktionen</a>
+        <a href="mailto:matsbotsson@gmail.com">Tipsa oss</a>
+        <a href="./annonsera.html">Annonsera</a>
+        <a href="./integritet.html">Integritet</a>
+        <a href="./program.html">Program</a>
+      </nav>
+      <p class="footer-note">Texter, tider, väder och bilder är platshållare. Inga publicerade nyheter.</p>
+    </div>
+  </footer>
+  <nav class="bottom-nav" aria-label="Mobil"><a href="./index.html" aria-current="page"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.2 12 4l8 7.2"/><path d="M7 10.2V20h10V10.2"/></svg><span>Hem</span></a><a href="./index.html#nyheter"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14M5 12h14M5 18h9"/></svg><span>Nyheter</span></a><a href="./program.html"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span>Program</span></a><button type="button" data-mer aria-expanded="false" aria-controls="mer-panel"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14M5 12h14M5 17h14"/></svg><span>Mer</span></button></nav>
+  <nav id="mer-panel" class="mer-panel" hidden aria-label="Mer"><a href="./samhalle.html">Samhälle</a><a href="./ekonomi.html">Ekonomi och Företag</a><a href="./sport.html">Sport</a><a href="./kultur.html">Kultur</a><a href="./program.html">Program</a><a href="./om.html">Om redaktionen</a><a href="./annonsera.html">Annonsera</a><a href="./integritet.html">Integritet</a><a href="mailto:matsbotsson@gmail.com">Tipsa oss</a></nav>
+  <dialog id="artikel-panel" class="panel" aria-label="Artikel">
+    <div class="panel-sheet">
+      <div class="panel-bar">
+        <a href="./artikel.html">Egen sida</a>
+        <button type="button" class="panel-close" data-close>Stäng</button>
       </div>
-      <p id="count" class="count" aria-live="polite">Hämtar nyheter …</p>
-      <noscript>
-        <p class="status">Slå på JavaScript för att visa nyhetslistan. Underlaget ligger öppet i data/news.json.</p>
-      </noscript>
-      <div id="news-list" class="news-list" aria-busy="true"></div>
-    </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <p>Hunnestad &amp; Grimeton Nyheter samlar öppna källor om de två byarna. Sidan uppdateras automatiskt en gång om dagen och är inte en officiell kanal för Varbergs kommun.</p>
-        <nav class="footer-nav" aria-label="Sidfot">
-          <a href="./index.html" aria-current="page">Hem</a>
-          <a href="./om.html">Om sidan</a>
-        </nav>
-      </div>
-    </footer>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+      <div class="panel-body"></div>
+    </div>
+  </dialog>
+  <script type="module" src="./js/site.js"></script>
+</body>
 </html>

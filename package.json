@@ -2,7 +2,7 @@
   "name": "hunnestad-grimeton-nyheter",
   "version": "1.0.0",
   "private": true,
-  "description": "Statisk nyhetssida för Hunnestad och Grimeton i Varbergs kommun.",
+  "description": "Statisk designmall för Supernytt Grimeton & Hunnestad.",
   "type": "module",
   "engines": {
     "node": ">=18"
@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "update-news": "node scripts/update-news.mjs"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^6.3.5"
