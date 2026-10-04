@@ -120,6 +120,7 @@ function normalizeItem(raw) {
   if (typeof raw.quote === "string" && raw.quote.trim()) item.quote = raw.quote.trim();
   if (typeof raw.quoteBy === "string" && raw.quoteBy.trim()) item.quoteBy = raw.quoteBy.trim();
   if (raw.emailSource === true) item.emailSource = true;
+  if (raw.critical === true) item.critical = true;
   return item;
 }
 
@@ -141,6 +142,11 @@ function prepare(list) {
 
 function homeNews(items) {
   return items.filter((item) => !item.tip && item.section !== "Tips");
+}
+
+function isJustNuItem(item) {
+  const tip = item.tags.some((tag) => tag.toLowerCase() === "tips") || item.emailSource === true;
+  return tip || item.critical === true;
 }
 
 function articleHref(id) {
@@ -339,7 +345,7 @@ function renderPuff(item) {
 function renderHome(data) {
   const home = homeNews(data.real);
   const lead = home[0] || data.examples[0] || data.items[0];
-  const justNu = data.real[0] || lead;
+  const justNu = [...data.real, ...data.examples].filter(isJustNuItem).sort(byDateDesc)[0] || null;
   if (!lead) return;
 
   const leadHost = document.querySelector("[data-lead]");
@@ -358,11 +364,17 @@ function renderHome(data) {
   }
 
   const now = document.querySelector("[data-now]");
-  if (now && justNu) {
-    now.href = articleHref(justNu.id);
-    now.classList.add("js-artikel");
+  if (now) {
     const line = now.querySelector(".now-line");
-    if (line) line.textContent = justNu.example ? `Exempel: ${justNu.title}` : justNu.title;
+    if (justNu) {
+      now.hidden = false;
+      now.href = articleHref(justNu.id);
+      now.classList.add("js-artikel");
+      if (line) line.textContent = justNu.example ? `Exempel: ${justNu.title}` : justNu.title;
+    } else {
+      now.hidden = true;
+      if (line) line.textContent = "";
+    }
   }
 
   const puffHost = document.querySelector("[data-puffs]");
