@@ -245,8 +245,6 @@ function renderStory(item, items) {
   head.className = "story-head";
   head.append(el("p", "kicker", kickerText(item)));
   head.append(el("h1", null, item.title));
-  const deck = shorten(item.summary, 220);
-  head.append(el("p", "deck", deck));
   head.append(el("p", "byline", `${item.source} · ${formatLong(item.publishedAt)} · ${formatClock(item.publishedAt)} · ${item.place}`));
   story.append(head);
 
@@ -261,7 +259,7 @@ function renderStory(item, items) {
 
   const body = document.createElement("div");
   body.className = "story-body";
-  if (deck !== item.summary) body.append(el("p", null, item.summary));
+  body.append(el("p", null, item.summary));
   if (item.example && !item.summary.startsWith("Exempel.")) {
     body.append(el("p", null, "Exempel. Påhittad text, inte en verifierad nyhet."));
   }
@@ -358,7 +356,6 @@ function renderHome(data) {
     if (img) link.append(img);
     link.append(el("p", "kicker", kickerText(lead)));
     link.append(el("h1", null, lead.title));
-    link.append(el("p", "deck", shorten(lead.summary, 220)));
     link.append(el("p", "byline", byline(lead)));
     leadHost.append(link);
   }
@@ -442,7 +439,6 @@ function renderSection(data) {
     const copy = document.createElement("div");
     copy.append(el("p", "kicker", kickerText(lead)));
     copy.append(el("h2", null, lead.title));
-    copy.append(el("p", "ingress", shorten(lead.summary, 180)));
     copy.append(el("p", "byline", byline(lead)));
     link.append(copy);
     leadHost.append(link);
