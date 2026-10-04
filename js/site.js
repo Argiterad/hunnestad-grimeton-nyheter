@@ -396,6 +396,13 @@ function renderHome(data) {
       link.href = articleHref(item.id);
       link.append(el("span", "kicker", kickerText(item)));
       link.append(el("span", "m-hed", item.title));
+      const img = makeImage(item, "");
+      if (img) {
+        img.className = "m-thumb";
+        img.width = 160;
+        img.height = 120;
+        link.append(img);
+      }
       li.append(time, link);
       return li;
     }));
