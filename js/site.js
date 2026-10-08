@@ -259,7 +259,7 @@ function renderStory(item, items) {
 
   const body = document.createElement("div");
   body.className = "story-body";
-  body.append(el("p", null, item.summary));
+  item.summary.split(/\n\s*\n/).map((part) => part.replace(/\s*\n\s*/g, " ").trim()).filter(Boolean).forEach((part) => body.append(el("p", null, part)));
   if (item.example && !item.summary.startsWith("Exempel.")) {
     body.append(el("p", null, "Exempel. Påhittad text, inte en verifierad nyhet."));
   }
