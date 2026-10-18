@@ -576,7 +576,7 @@ h1, h2, h3 { transition: color 120ms ease; }
 
 .event {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.8rem 0;
   border-top: 1px solid var(--line);
@@ -589,6 +589,20 @@ h1, h2, h3 { transition: color 120ms ease; }
 }
 
 .event .kicker { margin: 0; }
+
+.event-meta {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.event-link {
+  color: var(--brick);
+  font-weight: 500;
+  text-underline-offset: 0.16em;
+}
+
+.event-link:hover { text-decoration: underline; }
 
 .event-title {
   margin: 0.12rem 0 0;

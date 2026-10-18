@@ -684,11 +684,153 @@ function setupFilters() {
   });
 }
 
+const EVENT_SECTIONS = {
+  samhalle: "Samhälle",
+  naringsliv: "Näringsliv",
+  sport: "Sport",
+  kultur: "Kultur",
+  debatt: "Debatt",
+};
+
+function isDateKey(value) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T12:00:00Z`));
+}
+
+function safeUrl(value) {
+  try {
+    const url = new URL(String(value));
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function todayKey() {
+  return new Intl.DateTimeFormat("sv-SE", {
+    timeZone: ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
+function formatDay(key, withYear) {
+  const text = new Intl.DateTimeFormat("sv-SE", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    ...(withYear ? { year: "numeric" } : {}),
+    timeZone: "UTC",
+  }).format(new Date(`${key}T12:00:00Z`));
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function prepareEvents(raw) {
+  if (!Array.isArray(raw)) return [];
+  const today = todayKey();
+  const text = (value) => (typeof value === "string" ? value.trim() : "");
+  return raw
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return null;
+      const title = text(entry.title);
+      const date = text(entry.date);
+      if (!title || !isDateKey(date)) return null;
+      const endDate = isDateKey(text(entry.endDate)) && text(entry.endDate) > date ? text(entry.endDate) : "";
+      const key = text(entry.section).toLowerCase();
+      return {
+        title,
+        date,
+        endDate,
+        time: text(entry.time),
+        section: EVENT_SECTIONS[key] ? key : "",
+        place: text(entry.place),
+        organizer: text(entry.organizer),
+        url: safeUrl(entry.url),
+        note: text(entry.note),
+      };
+    })
+    .filter((event) => event && (event.endDate || event.date) >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function renderEvent(event) {
+  const item = el("li", "event");
+  item.dataset.sektion = event.section || "alla";
+  const time = el("time", null, event.time);
+  time.dateTime = event.date;
+  const body = el("div");
+  const kicker = [EVENT_SECTIONS[event.section], event.place].filter(Boolean).join(" · ");
+  if (kicker) body.append(el("p", "kicker", kicker));
+  body.append(el("h3", "event-title", event.title));
+  if (event.organizer) body.append(el("p", "event-meta", `Arrangör: ${event.organizer}`));
+  const note = [event.endDate ? `Pågår till ${formatDay(event.endDate, true).toLowerCase()}.` : "", event.note].filter(Boolean).join(" ");
+  if (note) body.append(el("p", "event-meta", note));
+  if (event.url) {
+    const link = el("a", "event-link", "Läs mer");
+    link.href = event.url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    body.append(el("p", "event-meta", null));
+    body.lastChild.append(link);
+  }
+  if (event.time) item.append(time);
+  else item.append(el("span"));
+  item.append(body);
+  return item;
+}
+
+function renderProgram(events) {
+  const empty = document.querySelector("[data-program-empty]");
+  const filters = document.querySelector("[data-program-filters]");
+  const days = document.querySelector("[data-program-days]");
+  if (!days) return;
+  days.replaceChildren();
+  if (!events.length) {
+    if (empty) empty.hidden = false;
+    if (filters) filters.hidden = true;
+    return;
+  }
+  if (empty) empty.hidden = true;
+  if (filters) filters.hidden = false;
+  const thisYear = todayKey().slice(0, 4);
+  const groups = new Map();
+  events.forEach((event) => {
+    if (!groups.has(event.date)) groups.set(event.date, []);
+    groups.get(event.date).push(event);
+  });
+  groups.forEach((list, key) => {
+    const day = el("section", "day");
+    day.append(el("h2", null, formatDay(key, key.slice(0, 4) !== thisYear)));
+    const ul = el("ul");
+    list.forEach((event) => ul.append(renderEvent(event)));
+    day.append(ul);
+    days.append(day);
+  });
+  setupFilters();
+}
+
+async function fetchEvents() {
+  const response = await fetch(new URL("../data/events.json", import.meta.url));
+  if (!response.ok) throw new Error(String(response.status));
+  return prepareEvents(await response.json());
+}
+
+function setupProgram() {
+  if (!document.querySelector("[data-program-days]")) return;
+  fetchEvents().then(renderProgram).catch(() => {
+    const empty = document.querySelector("[data-program-empty]");
+    if (empty) {
+      empty.textContent = "Programmet kunde inte hämtas just nu.";
+      empty.hidden = false;
+    }
+  });
+}
+
 function boot() {
   const desktop = window.matchMedia("(min-width: 801px)");
   setupToday();
   setupMer(desktop);
-  setupFilters();
+  setupProgram();
   const panel = setupPanel(desktop);
   const needsNews = document.querySelector("[data-lead], [data-section], [data-page='artikel']");
   if (!needsNews) return;
