@@ -54,5 +54,49 @@
     "organizer": "Privat arrangör (kommersiell kurs)",
     "url": "https://www.facebook.com/events/1068596702794049",
     "note": "Uppgifterna är inte bekräftade."
+  },
+  {
+    "id": "hunnestad-hembygdsforening-55-ar-2026",
+    "title": "Jubileumsfest – Hunnestads hembygdsförening 55 år",
+    "date": "2026-10-24",
+    "time": "18.00",
+    "section": "samhalle",
+    "place": "Huneborg, Hunnestad",
+    "organizer": "Hunnestads hembygdsförening",
+    "url": "https://www.facebook.com/groups/76950663755/",
+    "note": "Välkomstdrink, trerättersmiddag, dans och underhållning, 300 kr. Anmälan krävs, sista dag tisdag 20 oktober."
+  },
+  {
+    "id": "ficklampsjakt-backaslatt-2026",
+    "title": "Ficklampsjakt på Bäckaslätt",
+    "date": "2026-10-28",
+    "time": "18.00–19.00",
+    "section": "kultur",
+    "place": "Bäckaslätt, Grimeton 108",
+    "organizer": "Grimetons Hembygdsförening",
+    "url": "https://www.hembygd.se/grimeton/activities/57427",
+    "note": "Familjeaktivitet med halländska väsen. Ta med ficklampa. Gratis, ingen anmälan."
+  },
+  {
+    "id": "aterbruk-i-verkstan-grimeton-2026",
+    "title": "Höstlov: Återbruk i Verkstan med Ulf Svensson (Sibbarparn)",
+    "date": "2026-10-28",
+    "time": "10.30 och 13.00",
+    "section": "kultur",
+    "place": "Världsarvet Grimeton, besökscentrum",
+    "organizer": "Världsarvet Grimeton",
+    "url": "https://grimeton.org/event/aterbruk-i-verkstan/",
+    "note": "Ingår i entrén."
+  },
+  {
+    "id": "origami-workshop-grimeton-2026",
+    "title": "Höstlov: Origami-workshop med Ann-Louise Hellman",
+    "date": "2026-10-29",
+    "time": "10.30 och 13.00",
+    "section": "kultur",
+    "place": "Världsarvet Grimeton",
+    "organizer": "Världsarvet Grimeton",
+    "url": "https://grimeton.org/event/origami-workshop/",
+    "note": "Ingår i entrén, från 7 år. Tranor kan skänkas till Fredsparken i Hiroshima."
   }
 ]
