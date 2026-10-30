@@ -120,5 +120,49 @@
     "organizer": "Hunnestads hembygdsförening",
     "url": "https://www.facebook.com/groups/76950663755/posts/10165511294228756",
     "note": "Anmälan senast 3 november till Huneborgs bokningstelefon, 072-556 38 35. Sluttid och pris anges inte."
+  },
+  {
+    "id": "mys-och-rys-kodjakt-grimeton-2026-10-30",
+    "title": "Mys & Rys – kodjakt i mörkret",
+    "date": "2026-10-30",
+    "time": "Cirka 17.00",
+    "section": "kultur",
+    "place": "Radiostationen Grimeton",
+    "organizer": "Världsarvet Grimeton",
+    "url": "https://grimeton.org/en/event/autumn-break-and-cozy-creepy/",
+    "note": "Höstlovets sista kvällsjakt. Rekommenderas från 15 år, och yngre deltar i vuxens sällskap. Ingen förbokning behövs. Dagtid 28–31 oktober är världsarvet öppet kl. 10.00–15.00 med kodjakt, guidade visningar och lunch."
+  },
+  {
+    "id": "minnesgudstjanst-grimetons-kyrka-2026-11-01",
+    "title": "Minnesgudstjänst med TON-åringarna",
+    "date": "2026-11-01",
+    "time": "18.00",
+    "section": "samhalle",
+    "place": "Grimetons kyrka",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/filer/518923/26-0723%20Nr%203%202026_webb.pdf",
+    "note": "Tiden kommer från församlingsbladet Nytt från Himledalens församling nr 3/2026, som gavs ut i somras, och är inte bekräftad."
+  },
+  {
+    "id": "allhelgonakaffe-hunnestad-2026-11-03",
+    "title": "Allhelgonakaffe med kaffe och dopp",
+    "date": "2026-11-03",
+    "time": "14.00–16.00",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/filer/518923/26-0723%20Nr%203%202026_webb.pdf",
+    "note": "Tiden kommer från församlingsbladet Nytt från Himledalens församling nr 3/2026, som gavs ut i somras, och är inte bekräftad."
+  },
+  {
+    "id": "mandagstraff-hunnestad-2026-11-30",
+    "title": "Måndagsträff – terminens sista",
+    "date": "2026-11-30",
+    "time": "13.30–15.30",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/filer/518923/26-0723%20Nr%203%202026_webb.pdf",
+    "note": "Fika och handarbete, alla är välkomna. Tiden kommer från församlingsbladet Nytt från Himledalens församling nr 3/2026, som gavs ut i somras, och är inte bekräftad."
   }
 ]
