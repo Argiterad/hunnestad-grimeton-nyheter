@@ -186,5 +186,27 @@
     "organizer": "Ej angiven",
     "url": "https://www.facebook.com/events/2023803431618509/",
     "note": "Två konserter samma dag, kl. 15.00 och kl. 17.30. Arrangör, pris och biljetter är inte bekräftade."
+  },
+  {
+    "id": "kvallsgudstjanst-hunnestads-kyrka-2026-11-08",
+    "title": "Kvällsgudstjänst – Förlåtelse utan gräns",
+    "date": "2026-11-08",
+    "time": "18.00",
+    "section": "kultur",
+    "place": "Hunnestads kyrka",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/helgens-gudstjanster-5-8/5",
+    "note": "23:e söndagen efter trefaldighet. Präst Kalle Svensson och kantor Eva Johbarn enligt församlingen. Stiftskollekten går till Stiftelsen kyrkans familjerådgivning."
+  },
+  {
+    "id": "adventskaffe-hunnestad-2026-12-08",
+    "title": "Adventskaffe med kaffe och dopp",
+    "date": "2026-12-08",
+    "time": "14.00–16.00",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/hostkaffe",
+    "note": "Kaffe med dopp och samvaro."
   }
 ]
