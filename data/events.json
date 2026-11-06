@@ -219,5 +219,61 @@
     "organizer": "Himledalens församling",
     "url": "https://www.svenskakyrkan.se/himledalen/mandagstraff-i-hunnestad",
     "note": "Fika och handarbete, alla är välkomna. Datumet kommer från församlingens webbsida (ändrad 4 nov) och är inte bekräftat."
+  },
+  {
+    "id": "namninsamling-hastighet-palen-hunnestad-2026-11-06",
+    "title": "Namninsamling för sänkt hastighet runt Pålen",
+    "date": "2026-11-06",
+    "time": "15.00–17.00",
+    "section": "samhalle",
+    "place": "Utanför ICA Nära, Hunnestad",
+    "organizer": "Hunnestads hembygdsförening",
+    "url": "https://www.facebook.com/groups/76950663755/posts/10165561268628756/",
+    "note": "Hallandsbygdsboken säljs för 120 kr och kaffe serveras. Uppgifterna är obekräftade och kommer från ett inlägg på Facebook."
+  },
+  {
+    "id": "vuxenbarn-hu-hunnestad-2026-11-06",
+    "title": "VuxenBarn Hu – pyssel, lek och sång",
+    "date": "2026-11-06",
+    "time": "09.30–11.30",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/vuxen-barngrupp",
+    "note": "Drop-in, ingen anmälan. Återkommer på fredagar kl. 09.30–11.30, bland annat 13, 20 och 27 november."
+  },
+  {
+    "id": "hogmassa-grimetons-kyrka-2026-11-15",
+    "title": "Högmässa",
+    "date": "2026-11-15",
+    "time": "10.00",
+    "section": "kultur",
+    "place": "Grimetons kyrka",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/filer/518923/26-0723%20Nr%203%202026_webb.pdf",
+    "note": "Tiden kommer från församlingsbladet Nytt från Himledalens församling nr 3/2026 och är inte bekräftad."
+  },
+  {
+    "id": "gudstjanst-konfirmander-hunnestads-kyrka-2026-11-29",
+    "title": "Gudstjänst – konfirmanderna välkomnas",
+    "date": "2026-11-29",
+    "time": "14.00",
+    "section": "kultur",
+    "place": "Hunnestads kyrka",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/filer/518923/26-0723%20Nr%203%202026_webb.pdf",
+    "note": "U-kören Star medverkar enligt källan. Tiden kommer från församlingsbladet Nytt från Himledalens församling nr 3/2026 och är inte bekräftad."
+  },
+  {
+    "id": "den-svarta-fyrkanten-grimeton-2026",
+    "title": "Den svarta fyrkanten – konstutställning",
+    "date": "2026-09-05",
+    "endDate": "2026-12-12",
+    "time": "Enligt världsarvets öppettider (ons–lör 10–15 under hösten)",
+    "section": "kultur",
+    "place": "Världens rum, Grimeton Radiostation",
+    "organizer": "Världsarvet Grimeton",
+    "url": "https://grimeton.org/event/den-svarta-fyrkanten/",
+    "note": "Ytan kan vara abonnerad. Besökare uppmanas kontakta info@grimeton.org. Stöd från Region Halland."
   }
 ]
