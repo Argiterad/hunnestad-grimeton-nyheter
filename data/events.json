@@ -275,5 +275,49 @@
     "organizer": "Världsarvet Grimeton",
     "url": "https://grimeton.org/event/den-svarta-fyrkanten/",
     "note": "Ytan kan vara abonnerad. Besökare uppmanas kontakta info@grimeton.org. Stöd från Region Halland."
+  },
+  {
+    "id": "bibelgrupp-hunnestad-2026-11-18",
+    "title": "Bibelgrupp",
+    "date": "2026-11-18",
+    "time": "09.30",
+    "section": "kultur",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/terminsstarter-2025",
+    "note": "Gruppen träffas varannan onsdag, ojämna veckor."
+  },
+  {
+    "id": "vuxenbarn-hu-hunnestad-2026-11-13",
+    "title": "VuxenBarn Hu – pyssel, lek och sång",
+    "date": "2026-11-13",
+    "time": "09.30–11.30",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/vuxen-barngrupp",
+    "note": "Drop-in, ingen anmälan."
+  },
+  {
+    "id": "vuxenbarn-hu-hunnestad-2026-11-20",
+    "title": "VuxenBarn Hu – pyssel, lek och sång",
+    "date": "2026-11-20",
+    "time": "09.30–11.30",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/vuxen-barngrupp",
+    "note": "Drop-in, ingen anmälan."
+  },
+  {
+    "id": "vuxenbarn-hu-hunnestad-2026-11-27",
+    "title": "VuxenBarn Hu – pyssel, lek och sång",
+    "date": "2026-11-27",
+    "time": "09.30–11.30",
+    "section": "samhalle",
+    "place": "Hunnestads församlingshem",
+    "organizer": "Himledalens församling",
+    "url": "https://www.svenskakyrkan.se/himledalen/vuxen-barngrupp",
+    "note": "Drop-in, ingen anmälan."
   }
 ]
