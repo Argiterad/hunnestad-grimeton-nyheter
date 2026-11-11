@@ -108,7 +108,7 @@
     "place": "Grimeton Lantmän, Källängsvägen 1, Grimeton",
     "organizer": "Grimeton Lantmän och Grimetons Hembygdsförening",
     "url": "https://grimetonlantman.se/evenemang/",
-    "note": "Grill, vildsvinskebab från Restaurang 108, kaffe och bakverk från SRG:s ungdomsförening, lokala utställare, rabatthjul, julsånger och dragspelsmusik. UF-företaget Skeddraget säljer handgjorda fiskedrag av återbrukade skedar och tar emot gamla skedar, och Passion & Smak från Helsingborg deltar enligt Grimeton Lantmän."
+    "note": "Grill, vildsvinskebab från Restaurang 108, kaffe och bakverk från SRG:s ungdomsförening, lokala utställare, rabatthjul, julsånger och dragspelsmusik. UF-företaget Skeddraget säljer handgjorda fiskedrag av återbrukade skedar och tar emot gamla skedar, och Passion & Smak från Helsingborg deltar enligt Grimeton Lantmän. Bland utställarna finns också FineFeet (fotvårdsprodukter och presentkort), SoFine Art (julkort och akvareller) och en utställare med självlysande lerfigurer och julörhängen."
   },
   {
     "id": "filmer-fran-forr-huneborg-2026-11-08",
@@ -319,5 +319,15 @@
     "organizer": "Himledalens församling",
     "url": "https://www.svenskakyrkan.se/himledalen/vuxen-barngrupp",
     "note": "Drop-in, ingen anmälan."
+  },
+  {
+    "id": "zup-burger-ica-hunnestad-2026-11-13",
+    "title": "Zup Burger – foodtruck vid ICA Hunnestad",
+    "date": "2026-11-13",
+    "time": "16.00–18.45",
+    "section": "naringsliv",
+    "place": "Utanför ICA Nära, Hunnestad",
+    "organizer": "Zup Burger",
+    "url": "https://www.facebook.com/groups/76950663755/posts/10165591563843756"
   }
 ]
